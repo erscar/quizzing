@@ -1,38 +1,39 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quiz-Web-App</title>
-    <style>
-        body { font-family: Arial, sans-serif; margin: 20px; }
-        .question { margin-bottom: 20px; }
-        .question h2 { font-size: 1.2em; }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Custom Quiz</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>Willkommen beim Quiz!</h1>
-    <form id="quizForm">
-        <div class="question">
-            <h2>Frage 1: Was ist die Hauptstadt von Deutschland?</h2>
-            <label><input type="radio" name="q1" value="Berlin"> Berlin</label><br>
-            <label><input type="radio" name="q1" value="München"> München</label><br>
-            <label><input type="radio" name="q1" value="Hamburg"> Hamburg</label><br>
-        </div>
-        <!-- Weitere Fragen können hier eingefügt werden -->
-        <button type="button" onclick="auswerten()">Antworten absenden</button>
-    </form>
-    <div id="result"></div>
-    <script>
-        function auswerten() {
-            let resultDiv = document.getElementById("result");
-            let q1 = document.querySelector('input[name="q1"]:checked');
-            let score = 0;
-            if(q1 && q1.value === "Berlin") {
-                score++;
-            }
-            resultDiv.innerHTML = `<h2>Du hast ${score} von 1 Punkten erreicht!</h2>`;
-        }
-    </script>
+  <!-- Namenseingabe -->
+  <div id="welcome-screen">
+    <h1>Willkommen zum Quiz!</h1>
+    <p>Bitte gib deinen Namen ein:</p>
+    <input type="text" id="userName" placeholder="Dein Name">
+    <button id="start-btn">Start Quiz</button>
+  </div>
+
+  <!-- Quiz-Bereich -->
+  <div id="quiz-container" style="display: none;">
+    <div id="question-container">
+      <h2 id="question-title"></h2>
+      <img id="question-image" src="" alt="Frage Bild">
+      <div id="answers-container"></div>
+    </div>
+    <button id="next-btn" style="display: none;">Nächste Frage</button>
+  </div>
+
+  <!-- Ergebnis & Highscore -->
+  <div id="result-screen" style="display: none;">
+    <h2>Quiz beendet!</h2>
+    <p id="final-score"></p>
+    <h3>Highscore</h3>
+    <ul id="highscore-list"></ul>
+    <button id="restart-btn">Neustarten</button>
+  </div>
+
+  <script src="script.js"></script>
 </body>
 </html>
