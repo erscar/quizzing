@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz-Web-App</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .question { margin-bottom: 20px; }
+        .question h2 { font-size: 1.2em; }
+    </style>
+</head>
+<body>
+    <h1>Willkommen beim Quiz!</h1>
+    <form id="quizForm">
+        <div class="question">
+            <h2>Frage 1: Was ist die Hauptstadt von Deutschland?</h2>
+            <label><input type="radio" name="q1" value="Berlin"> Berlin</label><br>
+            <label><input type="radio" name="q1" value="München"> München</label><br>
+            <label><input type="radio" name="q1" value="Hamburg"> Hamburg</label><br>
+        </div>
+        <!-- Weitere Fragen können hier eingefügt werden -->
+        <button type="button" onclick="auswerten()">Antworten absenden</button>
+    </form>
+    <div id="result"></div>
+    <script>
+        function auswerten() {
+            let resultDiv = document.getElementById("result");
+            let q1 = document.querySelector('input[name="q1"]:checked');
+            let score = 0;
+            if(q1 && q1.value === "Berlin") {
+                score++;
+            }
+            resultDiv.innerHTML = `<h2>Du hast ${score} von 1 Punkten erreicht!</h2>`;
+        }
+    </script>
+</body>
+</html>
